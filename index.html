@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html class="h-full" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restart ToDo</title>
+    
+    <link rel="stylesheet" href="./css/output.css">
+</head>
+<body class="bg-body-bg dark:bg-body-bg-dark h-full" data-theme="light">
+    <header class="bg-light dark:bg-dark bg-no-repeat bg-center bg-cover h-[45vh]">
+        <div class="container mx-auto max-w-[581px] px-5 pt-12 md:pt-[70px]">
+            <!-- logo & theme changer -->
+            <div class="flex justify-between items-center pb-10">
+                <a href="./index.html">
+                    <img src="./images/logo.svg" alt="site-logo">
+                </a>
+                <img src="./images/moon.svg" alt="theme-changer">
+            </div>
+
+            <!-- input for new tasks -->
+            <form class="pb-4 md:pb-6">
+                <input class="bg-white dark:bg-input-bg w-full placeholder:text-task-placeholder dark:placeholder:text-task-placeholder-dark text-light-text dark:text-dark-text text-[18px] py-5 pl-18 rounded-[5px] bg-circle-light dark:bg-circle-dark bg-position-[left_24px_center] bg-no-repeat dark:bg-cicle-dark focus:outline-none" type="text" placeholder="Create a new todo...">
+            </form>
+
+            <!-- tasks list -->
+            <ul class="w-full flex flex-col rounded-[5px] overflow-hidden shadow-lg">
+                <li class="bg-white dark:bg-input-bg custom-border-b">
+                    <div class="py-5 pl-18 relative flex justify-between items-center">
+                        <input type="checkbox" id="check1" name="check1" class="hidden">
+                        <label for="check1" class="absolute left-6 top-1/2 -translate-y-1/2 w-6 h-6 bg-no-repeat bg-center cursor-pointer"></label>
+                        <h3 class="text-light-text dark:text-dark-text">Go home</h3>
+                        <button class="absolute right-6 top-1/2 -translate-y-1/2 w-[18px] h-[18px] bg-delete bg-no-repeat bg-center"></button>
+                    </div>
+                </li>  
+                <li class="bg-white dark:bg-input-bg custom-border-b">
+                    <div class="py-5 pl-18 relative flex justify-between items-center">
+                        <input type="checkbox" id="check2" name="check2" class="hidden">
+                        <label for="check2" class="absolute left-6 top-1/2 -translate-y-1/2 w-6 h-6 bg-no-repeat bg-center cursor-pointer"></label>
+                        <h3 class="text-light-text dark:text-dark-text">Go home</h3>
+                        <button class="absolute right-6 top-1/2 -translate-y-1/2 w-[18px] h-[18px] bg-delete bg-no-repeat bg-center"></button>
+                    </div>
+                </li>  
+                <li class="bg-white dark:bg-input-bg custom-border-b">
+                    <div class="py-5 pl-18 relative flex justify-between items-center">
+                        <input type="checkbox" id="check3" name="check3" class="hidden">
+                        <label for="check3" class="absolute left-6 top-1/2 -translate-y-1/2 w-6 h-6 bg-no-repeat bg-center cursor-pointer"></label>
+                        <h3 class="text-light-text dark:text-dark-text">Go home</h3>
+                        <button class="absolute right-6 top-1/2 -translate-y-1/2 w-[18px] h-[18px] bg-delete bg-no-repeat bg-center"></button>
+                    </div>
+                </li>  
+                <li class="bg-white dark:bg-input-bg py-4 px-6 flex justify-between">
+                    <p class="text-[14px] text-[#9495A5] leading-[-0.19px]"><span>5</span> Items left</p>
+                    <div class="flex gap-5">
+                        <button class="font-bold text-[14px] text-[#9495A5] focus:text-blue-700 hover:text-[#494C6B]">All</button>
+                        <button class="font-bold text-[14px] text-[#9495A5] focus:text-blue-700 hover:text-[#494C6B]">Active</button>
+                        <button class="font-bold text-[14px] text-[#9495A5] focus:text-blue-700 hover:text-[#494C6B]">Completed</button>
+                    </div>
+                    <button class="text-[14px] text-[#9495A5] leading-[-0.19px] hover:text-[#494C6B]">Clear Completed</button>
+                </li>
+                              
+            </ul>
+            
+
+            
+        <div>
+    </header>
+
+    <!-- template for list -->
+     <template id="list-temp">
+        <li class="bg-white dark:bg-input-bg custom-border-b">
+            <div class="py-5 pl-18 relative flex justify-between items-center">
+                <input type="checkbox" id="check-{{id}}" name="check-{{id}}" class="hidden">
+                <label for="check-{{id}}" class="absolute left-6 top-1/2 -translate-y-1/2 w-6 h-6 bg-no-repeat bg-center cursor-pointer"></label>
+                <h3 class="text-light-text dark:text-dark-text">Go home</h3>
+                <button class="absolute right-6 top-1/2 -translate-y-1/2 w-[18px] h-[18px] bg-delete bg-no-repeat bg-center"></button>
+            </div>
+        </li>
+     </template>
+
+     <!-- temp for footer li -->
+      <template>
+        <li class="bg-white dark:bg-input-bg py-4 px-6 flex justify-between">
+            <p class="text-[14px] text-[#9495A5] leading-[-0.19px]"><span>5</span> Items left</p>
+            <div class="flex gap-5">
+                <button class="font-bold text-[14px] text-[#9495A5] focus:text-blue-700 hover:text-[#494C6B]">All</button>
+                <button class="font-bold text-[14px] text-[#9495A5] focus:text-blue-700 hover:text-[#494C6B]">Active</button>
+                <button class="font-bold text-[14px] text-[#9495A5] focus:text-blue-700 hover:text-[#494C6B]">Completed</button>
+            </div>
+            <button class="text-[14px] text-[#9495A5] leading-[-0.19px] hover:text-[#494C6B]">Clear Completed</button>
+        </li>
+      </template>
+            
+            
+            
+    <script src="./js/main.js" type="module"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <li class="py-4 md:py-5 bg-white pl-18 custom-border-b bg-circle-light dark:bg-circle-dark hover:bg-circle-hover bg-position-[left_24px_center] bg-no-repeat dark:bg-cicle-dark">
+                    fkdjkkfdla;j
+
+                </li> -->

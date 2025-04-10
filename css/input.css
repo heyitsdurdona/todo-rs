@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+@theme {
+    --background-image-dark: url('../images/dark-bg.jpg');
+    --background-image-light: url('../images/light-bg.jpg');
+    --background-image-circle-light: url('../images/circle.svg');
+    --background-image-circle-dark: url('../images/dark-circle.svg');
+    --background-image-circle-hover: url('../images/circle-hover.svg');
+    --background-image-circle-checked: url('../images/checked-circle.svg');
+    --background-image-circle-hover-dark: url('../images/circle-hover-dark.svg');
+    --background-image-delete: url('../images/delete.svg');
+
+    --color-task-placeholder: #979797;
+    --color-task-placeholder-dark: #767992;
+    --color-light-text: #393A4B;
+    --color-dark-text: #C8CBE7;
+    --color-input-bg: #25273D;
+    --color-body-bg: #FFFFFF;
+    --color-body-bg-dark: #171823;
+    --color-task-border: #E3E4F1;
+}
+
+/* Checkbox label styles */
+input[type="checkbox"] + label {
+    background-image: var(--background-image-circle-light);
+}
+
+input[type="checkbox"] + label:hover {
+    background-image: var(--background-image-circle-hover);
+}
+
+input[type="checkbox"]:checked + label {
+    background-image: var(--background-image-circle-checked);
+}
+
+/* Dark mode styles */
+[data-theme="dark"] input[type="checkbox"] + label {
+    background-image: var(--background-image-circle-dark);
+} 
+
+[data-theme="dark"] input[type="checkbox"] + label:hover {
+    background-image: var(--background-image-circle-hover-dark);
+} 
+[data-theme="dark"] input[type="checkbox"]:checked +label {
+    background-image: var(--background-image-circle-checked);
+} 
+/* 
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    clip-path: rect(0 0 0 0);
+    overflow: hidden;
+} */
+
+.custom-border-b {
+    @apply border-b border-solid border-b-[#E3E4F1] dark:border-b-[#393A4B];
+}
+
+
+
