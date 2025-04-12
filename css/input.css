@@ -46,17 +46,6 @@ input[type="checkbox"]:checked + label {
 [data-theme="dark"] input[type="checkbox"]:checked +label {
     background-image: var(--background-image-circle-checked);
 } 
-/* 
-.visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    border: 0;
-    padding: 0;
-    clip-path: rect(0 0 0 0);
-    overflow: hidden;
-} */
 
 .custom-border-b {
     @apply border-b border-solid border-b-[#E3E4F1] dark:border-b-[#393A4B];
