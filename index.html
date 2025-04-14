@@ -29,51 +29,86 @@
                     <img class="hidden peer-checked:inline-block" src="./images/sun.svg" alt="theme-changer">
                 </label>
             </div>
-
+            
             <!-- input for new tasks -->
             <form id="inputForm" class="pb-4 md:pb-6">
-                <input class="bg-white dark:bg-input-bg w-full placeholder:text-task-placeholder dark:placeholder:text-task-placeholder-dark text-light-text dark:text-dark-text text-[18px] py-5 pl-18 rounded-[5px] bg-circle-light dark:bg-circle-dark bg-position-[left_24px_center] bg-no-repeat dark:bg-cicle-dark focus:outline-none" type="text" placeholder="Create a new todo..." name="input" required minlength="5" autocomplete="off">
+                <input class="bg-white dark:bg-input-bg w-full placeholder:text-task-placeholder dark:placeholder:text-task-placeholder-dark text-light-text dark:text-dark-text text-[18px] py-5 pl-18 rounded-[5px] bg-circle-light dark:bg-circle-dark bg-position-[left_24px_center] bg-no-repeat dark:bg-cicle-dark focus:outline-none focus:ring-0 focus:border-0" type="text" placeholder="Create a new todo..." name="input" required minlength="5" autocomplete="off">
             </form>
-
+            
             <!-- tasks list -->
             <ul id="taskList" class="w-full flex flex-col rounded-[5px] overflow-hidden shadow-lg"></ul>
+            
+            
+            <div>
+            </header>
+            
+            <!-- template for list -->
+            <template id="list-temp">
+                <li class="bg-white dark:bg-input-bg custom-border-b">
+                    <div class="py-5 pl-18 relative flex justify-between items-center">
+                        <input type="checkbox" name="inputCheck" id="check-{{id}}" class="hidden peer">
+                        <label for="check-{{id}}" class="absolute left-6 top-1/2 -translate-y-1/2 w-6 h-6 bg-no-repeat bg-center cursor-pointer"></label>
+                        <h3 class="text-[18px] leading-[-0.25px] font-[450] text-light-text dark:text-dark-text peer-checked:line-through peer-checked:text-checked-task-light dark:peer-checked:text-checked-task-dark cursor-pointer hover:underline" data-task-id="{{id}}" data-modal-target="default-modal" data-modal-toggle="default-modal">{{title}}</h3>
+                        <button id="deleteTask" class="absolute right-6 top-1/2 -translate-y-1/2 w-[18px] h-[18px] bg-delete bg-no-repeat bg-center"></button>
+                    </div>
+                </li>
+            </template>
+            
+            <!-- temp for footer li -->
+            <template id="footerLi-temp">
+                <li class="bg-white dark:bg-input-bg py-4 px-6 flex justify-between sticky bottom-0 z-10 border-b-0">
+                    <p class="text-[14px] text-[#9495A5] leading-[-0.19px]"><span id="tasksCount">5</span> Items left</p>
+                    <div class="flex gap-5">
+                        <button id="all" class="font-bold text-[14px] text-[#9495A5] focus:text-blue-700 hover:text-[#494C6B]">All</button>
+                        <button id="active" class="font-bold text-[14px] text-[#9495A5] focus:text-blue-700 hover:text-[#494C6B]">Active</button>
+                        <button id="completed" class="font-bold text-[14px] text-[#9495A5] focus:text-blue-700 hover:text-[#494C6B]">Completed</button>
+                    </div>
+                    <button id="clear" class="text-[14px] text-[#9495A5] leading-[-0.19px] hover:text-[#494C6B]">Clear Completed</button>
+                </li>
+            </template>
+            
+            <!-- modal start -->         
+            <!-- Modal toggle -->
+            
+            
+            <!-- Main modal -->
+            <div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                <div class="relative p-4 w-[70%] max-w-2xl max-h-full mx-auto">
+                    <!-- Modal content -->
+                    <div class="relative bg-white rounded-lg shadow-sm dark:bg-gray-700">
+                        <!-- Modal header -->
+                        <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                Task Detail
+                            </h3>
+                            <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                </svg>
+                                <span class="sr-only">Close modal</span>
+                            </button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="p-4 md:p-5 space-y-4">
+                            <p class="text-light-text dark:text-dark-text"><b>Title: </b><span id="modal-title"></span></p>
+                            <p class="text-light-text dark:text-dark-text"><b>Description: </b><span id="modal-description"></span></p>
+                            <p class="text-light-text dark:text-dark-text"><b>Created Date: </b><span id="modal-date"></span></p>
+                            <p class="text-light-text dark:text-dark-text"><b>Status: </b><span id="modal-status"></span></p>
+                            <p class="text-light-text dark:text-dark-text"><b>Task Id: </b><span id="modal-id"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <!-- Audios  -->
+            <audio id="audioRemoveTask" src="audios/remove-task.mp3"></audio>
+            <audio id="audioSelectStatus" src="audios/select-status.mp3"></audio>
+            <audio id="audioCheck" src="audios/check.mp3"></audio>
+            <audio id="audioAddNewTask" src="audios/add-new-task.mp3"></audio>
+            
+            <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>           
+            <script src="./js/main.js" type="module"></script>
+        </body>
+        </html>
         
-            
-        <div>
-    </header>
-
-    <!-- template for list -->
-     <template id="list-temp">
-        <li class="bg-white dark:bg-input-bg custom-border-b">
-            <div class="py-5 pl-18 relative flex justify-between items-center">
-                <input type="checkbox" name="inputCheck" id="check-{{id}}" class="hidden peer">
-                <label for="check-{{id}}" class="absolute left-6 top-1/2 -translate-y-1/2 w-6 h-6 bg-no-repeat bg-center cursor-pointer"></label>
-                <h3 class="text-[18px] leading-[-0.25px] font-[450] text-light-text dark:text-dark-text peer-checked:line-through peer-checked:text-checked-task-light dark:peer-checked:text-checked-task-dark">Go home</h3>
-                <button id="deleteTask" class="absolute right-6 top-1/2 -translate-y-1/2 w-[18px] h-[18px] bg-delete bg-no-repeat bg-center"></button>
-            </div>
-        </li>
-     </template>
-
-     <!-- temp for footer li -->
-      <template id="footerLi-temp">
-        <li class="bg-white dark:bg-input-bg py-4 px-6 flex justify-between sticky bottom-0 z-10 border-b-0">
-            <p class="text-[14px] text-[#9495A5] leading-[-0.19px]"><span id="tasksCount">5</span> Items left</p>
-            <div class="flex gap-5">
-                <button id="all" class="font-bold text-[14px] text-[#9495A5] focus:text-blue-700 hover:text-[#494C6B]">All</button>
-                <button id="active" class="font-bold text-[14px] text-[#9495A5] focus:text-blue-700 hover:text-[#494C6B]">Active</button>
-                <button id="completed" class="font-bold text-[14px] text-[#9495A5] focus:text-blue-700 hover:text-[#494C6B]">Completed</button>
-            </div>
-            <button id="clear" class="text-[14px] text-[#9495A5] leading-[-0.19px] hover:text-[#494C6B]">Clear Completed</button>
-        </li>
-      </template>
-            
-      <!-- Audios  -->
-    <audio id="audioRemoveTask" src="audios/remove-task.mp3"></audio>
-    <audio id="audioSelectStatus" src="audios/select-status.mp3"></audio>
-    <audio id="audioCheck" src="audios/check.mp3"></audio>
-    <audio id="audioAddNewTask" src="audios/add-new-task.mp3"></audio>
-            
-            
-    <script src="./js/main.js" type="module"></script>
-</body>
-</html>

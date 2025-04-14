@@ -33,11 +33,19 @@ elInputForm.addEventListener('submit', function(evt){
     evt.preventDefault();
     elAudioAddNewTask.play();
     const taskText = evt.target.input.value;
-    todos.items.unshift({title: taskText, isCompleted: false, id:  Date.now().toString()})
+    const newTask = {
+        title: taskText,
+        isCompleted: false,
+        id: Date.now().toString(),
+        date: new Date().toLocaleDateString(),
+        createdAt: new Date().toString(),
+        description: taskText
+    };
+    todos.items.unshift(newTask);
     localStorage.setItem('tasks', JSON.stringify(todos));
-    renderChoosenType(todos, currentType)
-    evt.target.reset()
-})
+    renderChoosenType(todos, currentType);
+    evt.target.reset();
+});
 
 // event delegation
 elTaskList.addEventListener('click', function(evt){
@@ -48,6 +56,28 @@ elTaskList.addEventListener('click', function(evt){
     let checkbox = li.querySelector('input[type="checkbox"]'); 
     if (checkbox) { 
         id = checkbox.id
+    }
+
+    // Show task details in modal when clicking the title
+    if (evt.target.matches('h3')) {
+        id = checkbox.id;
+        const task = todos.items.find(item => item.id === id);
+        
+        // Get modal elements
+        const modalTitle = document.getElementById('modal-title');
+        const modalDescription = document.getElementById('modal-description');
+        const modalDate = document.getElementById('modal-date');
+        const modalStatus = document.getElementById('modal-status');
+        const modalId = document.getElementById('modal-id');
+        
+        modalTitle.textContent = task.title;
+        modalDescription.textContent = task.title;
+        modalDate.textContent = task.date;
+        modalStatus.textContent = task.isCompleted ? 'Completed' : 'Active';
+        modalId.textContent = task.id;
+
+        const modal = document.getElementById('default-modal');
+        modal.classList.remove('hidden');
     }
 
     // changing task's completed using checkbox
@@ -100,6 +130,8 @@ elTaskList.addEventListener('click', function(evt){
     }
 
 });
+
+
 
 
 
