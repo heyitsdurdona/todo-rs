@@ -78,6 +78,12 @@ elTaskList.addEventListener('click', function(evt){
 
         const modal = document.getElementById('default-modal');
         modal.classList.remove('hidden');
+
+        // Add close button functionality
+        const closeButton = modal.querySelector('[data-modal-hide="default-modal"]');
+        closeButton.addEventListener('click', function() {
+            modal.classList.add('hidden');
+        });
     }
 
     // changing task's completed using checkbox
