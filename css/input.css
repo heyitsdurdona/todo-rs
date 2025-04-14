@@ -20,6 +20,9 @@
     --color-body-bg: #FFFFFF;
     --color-body-bg-dark: #171823;
     --color-task-border: #E3E4F1;
+
+    --color-checked-task-light: #D1D2DA;
+    --color-checked-task-dark: #4D5067;
 }
 
 /* Checkbox label styles */

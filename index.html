@@ -12,6 +12,7 @@
             overflow-y: auto;           
         }
     </style>
+    <link rel="icon" type="image/x-icon" href="./images/download.png">
 </head>
 <body class="bg-body-bg dark:bg-body-bg-dark h-full" data-theme="light">
     <header class="bg-light dark:bg-dark bg-no-repeat bg-center bg-cover h-[45vh]">
@@ -45,9 +46,9 @@
      <template id="list-temp">
         <li class="bg-white dark:bg-input-bg custom-border-b">
             <div class="py-5 pl-18 relative flex justify-between items-center">
-                <input type="checkbox" name="inputCheck" id="check-{{id}}" class="hidden">
+                <input type="checkbox" name="inputCheck" id="check-{{id}}" class="hidden peer">
                 <label for="check-{{id}}" class="absolute left-6 top-1/2 -translate-y-1/2 w-6 h-6 bg-no-repeat bg-center cursor-pointer"></label>
-                <h3 class="text-light-text dark:text-dark-text">Go home</h3>
+                <h3 class="text-[18px] leading-[-0.25px] font-[450] text-light-text dark:text-dark-text peer-checked:line-through peer-checked:text-checked-task-light dark:peer-checked:text-checked-task-dark">Go home</h3>
                 <button id="deleteTask" class="absolute right-6 top-1/2 -translate-y-1/2 w-[18px] h-[18px] bg-delete bg-no-repeat bg-center"></button>
             </div>
         </li>
@@ -66,6 +67,11 @@
         </li>
       </template>
             
+      <!-- Audios  -->
+    <audio id="audioRemoveTask" src="audios/remove-task.mp3"></audio>
+    <audio id="audioSelectStatus" src="audios/select-status.mp3"></audio>
+    <audio id="audioCheck" src="audios/check.mp3"></audio>
+    <audio id="audioAddNewTask" src="audios/add-new-task.mp3"></audio>
             
             
     <script src="./js/main.js" type="module"></script>

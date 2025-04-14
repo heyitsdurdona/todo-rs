@@ -47,8 +47,8 @@ export function renderChoosenType(todos, type){
     if (type === "active"){
         let active = todos.items.filter(el=> el.isCompleted===false);
         if (active.length<1){
-            alert('no task in active');
             uiRender(todos.items)
+            alert('no task in active');
         } else{
             uiRender(active)
         }
@@ -56,8 +56,8 @@ export function renderChoosenType(todos, type){
     if (type === "completed"){
         let completed = todos.items.filter(el=> el.isCompleted===true);
         if (completed.length<1){
-            alert('no task in completed')
             uiRender(todos.items)
+            alert('no task in completed');
         } else{
             uiRender(completed)
         }
