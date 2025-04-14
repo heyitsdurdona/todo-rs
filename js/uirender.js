@@ -39,3 +39,27 @@ export function removeTask(todos, id){
         todos.splice(index, 1); 
     }
 }
+
+export function renderChoosenType(todos, type){
+    if (type === "all"){
+        uiRender(todos.items)
+    }
+    if (type === "active"){
+        let active = todos.items.filter(el=> el.isCompleted===false);
+        if (active.length<1){
+            alert('no task in active');
+            uiRender(todos.items)
+        } else{
+            uiRender(active)
+        }
+    }
+    if (type === "completed"){
+        let completed = todos.items.filter(el=> el.isCompleted===true);
+        if (completed.length<1){
+            alert('no task in completed')
+            uiRender(todos.items)
+        } else{
+            uiRender(completed)
+        }
+    }
+}

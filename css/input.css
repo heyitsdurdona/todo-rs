@@ -55,17 +55,7 @@ input[type="checkbox"]:checked + label {
 #taskList::-webkit-scrollbar {
     width: 6px;
 }
-
-#taskList::-webkit-scrollbar-track {
-    background: var(--scrollbar-track);
-}
-
 #taskList::-webkit-scrollbar-thumb {
-    background: var(--scrollbar-thumb);
     border-radius: 3px;
-}
-
-#taskList::-webkit-scrollbar-thumb:hover {
-    background: var(--border-color);
 }
 

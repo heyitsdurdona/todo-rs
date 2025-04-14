@@ -196,9 +196,6 @@
   .sticky {
     position: sticky;
   }
-  .top-1 {
-    top: calc(var(--spacing) * 1);
-  }
   .top-1\/2 {
     top: calc(1/2 * 100%);
   }
@@ -241,9 +238,6 @@
   .hidden {
     display: none;
   }
-  .table {
-    display: table;
-  }
   .h-6 {
     height: calc(var(--spacing) * 6);
   }
@@ -268,22 +262,12 @@
   .max-w-\[581px\] {
     max-width: 581px;
   }
-  .border-collapse {
-    border-collapse: collapse;
-  }
-  .-translate-y-1 {
-    --tw-translate-y: calc(var(--spacing) * -1);
-    translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
   .-translate-y-1\/2 {
     --tw-translate-y: calc(calc(1/2 * 100%) * -1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .cursor-pointer {
     cursor: pointer;
-  }
-  .resize {
-    resize: both;
   }
   .flex-col {
     flex-direction: column;
@@ -303,13 +287,9 @@
   .rounded-\[5px\] {
     border-radius: 5px;
   }
-  .border {
-    border-style: var(--tw-border-style);
-    border-width: 1px;
-  }
-  .border-b {
+  .border-b-0 {
     border-bottom-style: var(--tw-border-style);
-    border-bottom-width: 1px;
+    border-bottom-width: 0px;
   }
   .bg-body-bg {
     background-color: var(--color-body-bg);
@@ -382,16 +362,9 @@
   .text-light-text {
     color: var(--color-light-text);
   }
-  .underline {
-    text-decoration-line: underline;
-  }
   .shadow-lg {
     --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-  .outline {
-    outline-style: var(--tw-outline-style);
-    outline-width: 1px;
   }
   .peer-checked\:hidden {
     &:is(:where(.peer):checked ~ *) {
@@ -406,13 +379,6 @@
   .placeholder\:text-task-placeholder {
     &::placeholder {
       color: var(--color-task-placeholder);
-    }
-  }
-  .hover\:bg-circle-hover {
-    &:hover {
-      @media (hover: hover) {
-        background-image: var(--background-image-circle-hover);
-      }
     }
   }
   .hover\:text-\[\#494C6B\] {
@@ -431,11 +397,6 @@
     &:focus {
       --tw-outline-style: none;
       outline-style: none;
-    }
-  }
-  .md\:py-5 {
-    @media (width >= 48rem) {
-      padding-block: calc(var(--spacing) * 5);
     }
   }
   .md\:pt-\[70px\] {
@@ -512,15 +473,8 @@ input[type="checkbox"]:checked + label {
 #taskList::-webkit-scrollbar {
   width: 6px;
 }
-#taskList::-webkit-scrollbar-track {
-  background: var(--scrollbar-track);
-}
 #taskList::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb);
   border-radius: 3px;
-}
-#taskList::-webkit-scrollbar-thumb:hover {
-  background: var(--border-color);
 }
 @property --tw-translate-x {
   syntax: "*";
@@ -615,11 +569,6 @@ input[type="checkbox"]:checked + label {
   inherits: false;
   initial-value: 0 0 #0000;
 }
-@property --tw-outline-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
-}
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
@@ -643,7 +592,6 @@ input[type="checkbox"]:checked + label {
       --tw-ring-offset-width: 0px;
       --tw-ring-offset-color: #fff;
       --tw-ring-offset-shadow: 0 0 #0000;
-      --tw-outline-style: solid;
     }
   }
 }
