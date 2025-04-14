@@ -7,14 +7,12 @@ uiRender(todos.items);
 
 const savedTheme = localStorage.getItem('theme') || 'light';
 document.body.dataset.theme = savedTheme;
-elTheme.src = savedTheme === 'dark' ? '../images/sun.svg' : '../images/moon.svg';
 
 // dark/light theme
 elTheme.addEventListener('click', function(evt){
     const currentTheme = document.body.dataset.theme;
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
     document.body.dataset.theme = newTheme;
-    evt.target.src = newTheme === 'dark' ? '../images/sun.svg' : '../images/moon.svg';
     localStorage.setItem('theme', newTheme);
 });
 

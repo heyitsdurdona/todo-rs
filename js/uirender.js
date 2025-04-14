@@ -24,6 +24,8 @@ export function uiRender(todos){
     elTaskList.appendChild(fragment);
 
     let footerClone = elFooterLiTemp.cloneNode(true).content;
+    const elTaskCount = footerClone.querySelector('#tasksCount');
+    elTaskCount.innerText = todos.length;
     if (todos.length > 0 ){
         elTaskList.append(footerClone);
     }

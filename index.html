@@ -6,6 +6,12 @@
     <title>Restart ToDo</title>
     
     <link rel="stylesheet" href="./css/output.css">
+    <style>
+        #taskList {
+            max-height: 400px;
+            overflow-y: auto;           
+        }
+    </style>
 </head>
 <body class="bg-body-bg dark:bg-body-bg-dark h-full" data-theme="light">
     <header class="bg-light dark:bg-dark bg-no-repeat bg-center bg-cover h-[45vh]">
@@ -15,7 +21,12 @@
                 <a href="./index.html">
                     <img src="./images/logo.svg" alt="site-logo">
                 </a>
-                <img id="theme" src="./images/moon.svg" alt="theme-changer">
+                <!-- changing img in dark/light - sun/moon -->
+                <label for="theme">
+                    <input id="theme" type="checkbox" class="peer sr-only">
+                    <img class="peer-checked:hidden" src="./images/moon.svg" alt="theme-changer">
+                    <img class="hidden peer-checked:inline-block" src="./images/sun.svg" alt="theme-changer">
+                </label>
             </div>
 
             <!-- input for new tasks -->
@@ -44,8 +55,8 @@
 
      <!-- temp for footer li -->
       <template id="footerLi-temp">
-        <li class="bg-white dark:bg-input-bg py-4 px-6 flex justify-between">
-            <p class="text-[14px] text-[#9495A5] leading-[-0.19px]"><span>5</span> Items left</p>
+        <li class="bg-white dark:bg-input-bg py-4 px-6 flex justify-between sticky bottom-0 z-10 border-b">
+            <p class="text-[14px] text-[#9495A5] leading-[-0.19px]"><span id="tasksCount">5</span> Items left</p>
             <div class="flex gap-5">
                 <button id="all" class="font-bold text-[14px] text-[#9495A5] focus:text-blue-700 hover:text-[#494C6B]">All</button>
                 <button id="active" class="font-bold text-[14px] text-[#9495A5] focus:text-blue-700 hover:text-[#494C6B]">Active</button>
